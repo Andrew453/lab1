@@ -3,8 +3,13 @@
     {
       "name": "1",
       "group": 0,
-      "avg": 5,
-      "debt": 4
+      "avg": [
+        "dsasd",
+        "dsasads"
+      ],
+      "debt": [
+       "dsdsa"
+      ]
     }
   ],
   "_meta": {

@@ -1,10 +1,13 @@
 {
   "items": [
     {
-      "name": "1",
+      "name": 1,
       "group": 0,
       "avg": 5,
-      "debt": 4
+      "debt": [
+        "dsada",
+        "dsasd"
+      ]
     }
   ],
   "_meta": {

@@ -10,13 +10,13 @@ int main(int argc, char* argv[]) {
     return 0;
   }
   std::string fp = (std::string)argv[1];
-  std::vector<Student> students = parse_json(fp);
-  if (students.empty()) {
-    std::cout << "Incorrect reading json file. There are in file problems with "
-                 "types of fields";
+  std::pair<std::vector<Student>,std::string> pair = parse_json(fp);
+  std::vector<Student> students = pair.first;
+  if (pair.second != "") {
+    std::cout << "Incorrect reading json file. " << pair.second;
     return 0;
   }
-  bool ok = output(students);
+  bool ok = output(students,std::cout);
   if (!ok) {
     std::cout << "Some problems with output table" << std::endl;
     return 0;

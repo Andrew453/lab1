@@ -3,26 +3,34 @@
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
 
-
-#include <iostream>
 #include <stdint.h>
-#include <filesystem>
-#include <exception>
-#include <fstream>
+
 #include <any>
+#include <exception>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
 // #include <boost/program_options.hpp>
 #include <nlohmann/json.hpp>
+
 #include "student.hpp"
 
+#define STUDENT_PAIR std::vector<Student>, std::string
 
 using json = nlohmann::json;
 
 std::string get_name(json* stt);
-std::any get_group(json* stt);
-std::any get_avg (json* stt);
-std::any get_debt(json* stt);
-std::vector<Student> parse_json(std::string path);
-Lengths get_lengths(std::vector<Student> students);
-bool output(const std::vector<Student>& students);
 
-#endif // INCLUDE_HEADER_HPP_
+std::any get_group(json* stt);
+
+std::any get_avg(json* stt);
+
+std::any get_debt(json* stt);
+
+std::pair<STUDENT_PAIR> parse_json(std::string path);
+
+Lengths get_lengths(std::vector<Student> students);
+
+bool output(const std::vector<Student>& students, std::ostream& os);
+
+#endif  // INCLUDE_HEADER_HPP_

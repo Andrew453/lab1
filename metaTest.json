@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "name": "AloneStudent",
+      "group": 0,
+      "avg": 5,
+      "debt": [
+        "dsadsa",
+        "dsfdsf",
+        "dsadsa",
+        "dsadsaad"
+      ]
+    }
+  ],
+  "_meta": {
+    "count": 4
+  }
+}
