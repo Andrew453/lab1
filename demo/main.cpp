@@ -21,6 +21,5 @@ int main(int argc, char* argv[]) {
     std::cout << "Some problems with output table" << std::endl;
     return 0;
   }
-  //  bool ok = output(students);
   return 0;
 }

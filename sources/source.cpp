@@ -67,14 +67,11 @@ std::pair<std::vector<Student>,std::string> parse_json(std::string path) {
   }
   json jf = json::parse(ifs);
   if (!jf.at("items").is_array()) {
-//    std::cout << "Items is not an array!" << std::endl;
     answer.first = std::vector<Student>{};
     answer.second = "Items is not an array!";
     return answer;
   }
   if (jf.at("items").size() != jf.at("_meta").at("count")) {
-//    std::cout << "Invalid number of students. The counter doesn't match "
-//              << std::endl;
     answer.first = std::vector<Student>{};
     answer.second = "Invalid number of students. The counter doesn't match";
     return answer;

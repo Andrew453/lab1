@@ -85,7 +85,7 @@ TEST(Errorhandling, NameNotString) {
   //  EXPECT_TRUE(true);
 }
 
-TEST(Errorhandling, DebtProcessing) {
+TEST(Errorhandling, DebtProccessing) {
   std::stringstream ss;
   std::pair<std::vector<Student>,std::string> pair = parse_json("../debtTest.json");
   std::vector<Student> students = pair.first;
@@ -98,7 +98,7 @@ TEST(Errorhandling, DebtProcessing) {
   //  EXPECT_TRUE(true);
 }
 
-TEST(Errorhandling, AvgProccesing) {
+TEST(Errorhandling, AvgProccessing) {
   std::stringstream ss;
   std::pair<std::vector<Student>,std::string> pair = parse_json("../avgTest.json");
   std::vector<Student> students = pair.first;
@@ -110,6 +110,33 @@ TEST(Errorhandling, AvgProccesing) {
   ASSERT_EQ("Incorrect reading json file. Incorrect avg of Student [\"dsasd\",\"dsasads\"]",ss.str());
   //  EXPECT_TRUE(true);
 }
+
+TEST(Errorhandling, ItemsProccessing) {
+  std::stringstream ss;
+  std::pair<std::vector<Student>,std::string> pair = parse_json("../itemsTest.json");
+  std::vector<Student> students = pair.first;
+  if (pair.second != "") {
+    ss << "Incorrect reading json file. " << pair.second;
+  } else {
+    output(students, ss);
+  }
+  ASSERT_EQ("Incorrect reading json file. Items is not an array!",ss.str());
+  //  EXPECT_TRUE(true);
+}
+
+TEST(Errorhandling, GroupProccessing) {
+  std::stringstream ss;
+  std::pair<std::vector<Student>,std::string> pair = parse_json("../groupTest.json");
+  std::vector<Student> students = pair.first;
+  if (pair.second != "") {
+    ss << "Incorrect reading json file. " << pair.second;
+  } else {
+    output(students, ss);
+  }
+  ASSERT_EQ("Incorrect reading json file. Incorrect group of Student [\"fdsfdsfssadas\"]",ss.str());
+  //  EXPECT_TRUE(true);
+}
+
 
 
 
