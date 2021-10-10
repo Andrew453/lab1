@@ -87,7 +87,7 @@ TEST(Errorhandling, NameNotString) {
 
 TEST(Errorhandling, DebtProccessing) {
   std::stringstream ss;
-  std::pair<std::vector<Student>,std::string> pair = parse_json("../debtTest.json");
+  std::pair<std::vector<Student>,std::string> pair = parse_json("../jsons/debtTest.json");
   std::vector<Student> students = pair.first;
   if (pair.second != "") {
     ss << "Incorrect reading json file. " << pair.second;
