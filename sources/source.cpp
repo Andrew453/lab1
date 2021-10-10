@@ -54,7 +54,7 @@ std::any get_debt(json* stt) {
   }
 
   if (stt->at("debt").is_array()) {
-    debt = (int)stt->at("debt").size();
+    debt = static_cast<int>(stt->at("debt").size());
   }
 
   return debt;
