@@ -1,4 +1,4 @@
-// Copyright 2020 Your Name <your_email>
+// Copyright 2020 Andrew Prokushev <senior.prockuschev2017@yandex.ru>
 
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
@@ -10,6 +10,10 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+
+#include <utility>
+#include <string>
+#include <vector>
 
 #include <nlohmann/json.hpp>
 

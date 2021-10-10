@@ -1,3 +1,4 @@
+// Copyright 2020 Andrew Prokushev <senior.prockuschev2017@yandex.ru>
 #include <any>
 
 #include "../include/header.hpp"
@@ -41,7 +42,7 @@ std::any get_avg(json* stt) {
 
   return avg;
 }
-//dssad
+// dssad
 std::any get_debt(json* stt) {
   std::any debt;
   if (stt->at("debt").is_string()) {
@@ -59,8 +60,8 @@ std::any get_debt(json* stt) {
   return debt;
 }
 
-std::pair<std::vector<Student>,std::string> parse_json(std::string path) {
-  std::pair<std::vector<Student>,std::string> answer;
+std::pair<std::vector<Student>, std::string> parse_json(std::string path) {
+  std::pair<std::vector<Student>, std::string> answer;
   std::ifstream ifs(path);
   if (!ifs) {
     throw std::runtime_error{"Can't find json file"};
@@ -83,7 +84,8 @@ std::pair<std::vector<Student>,std::string> parse_json(std::string path) {
     // NAME-----------------------------------------
     student.name = get_name(&stt);
     if (student.name == "") {
-      std::string error ="Incorrect name of Student:  " + to_string(stt.at("name"));
+      std::string error =
+          "Incorrect name of Student:  " + to_string(stt.at("name"));
       answer.first = std::vector<Student>{};
       answer.second = error;
       return answer;
@@ -93,10 +95,11 @@ std::pair<std::vector<Student>,std::string> parse_json(std::string path) {
     // GROUP----------------------------------------
     student.group = get_group(&stt);
     if (!student.group.has_value()) {
-//      std::cout << "Incorrect group of Student " << stt.at("group")
-//                << std::endl;
+      //      std::cout << "Incorrect group of Student " << stt.at("group")
+      //                << std::endl;
       answer.first = std::vector<Student>{};
-      answer.second = "Incorrect group of Student " + to_string(stt.at("group"));
+      answer.second =
+          "Incorrect group of Student " + to_string(stt.at("group"));
       return answer;
     }
     //    if (stt.at("group").is_number_float()) {
@@ -107,9 +110,10 @@ std::pair<std::vector<Student>,std::string> parse_json(std::string path) {
     // AVG------------------------------------------
     student.avg = get_avg(&stt);
     if (!student.avg.has_value()) {
-//      std::cout << "Incorrect avg of Student " << stt.at("avg") << std::endl;
+      //      std::cout << "Incorrect avg of Student " << stt.at("avg") <<
+      //      std::endl;
       answer.first = std::vector<Student>{};
-      answer.second = "Incorrect avg of Student " + to_string(stt.at("avg")) ;
+      answer.second = "Incorrect avg of Student " + to_string(stt.at("avg"));
       return answer;
     }
     //----------------------------------------------
@@ -117,7 +121,8 @@ std::pair<std::vector<Student>,std::string> parse_json(std::string path) {
     // DEBT-----------------------------------------
     student.debt = get_debt(&stt);
     if (!student.debt.has_value()) {
-//      std::cout << "Incorrect debt of Student " << stt.at("debt") << std::endl;
+      //      std::cout << "Incorrect debt of Student " << stt.at("debt") <<
+      //      std::endl;
       answer.first = std::vector<Student>{};
       answer.second = "Incorrect debt of Student: " + to_string(stt.at("debt"));
       return answer;
@@ -224,7 +229,7 @@ bool output(const std::vector<Student>& students, std::ostream& os) {
       os << std::setw(ls.group + 7) << grouptable;
     } else
       return false;
-//fdfds
+    // fdfds
     if (student.avg.type() == typeid(int)) {
       std::string avgtable =
           "| " + std::to_string(std::any_cast<int>(student.avg));
