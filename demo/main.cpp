@@ -10,7 +10,14 @@ int main(int argc, char* argv[]) {
     return 0;
   }
   std::string fp = (std::string)argv[1];
-  std::pair<std::vector<Student>,std::string> pair = parse_json(fp);
+
+  std::ifstream ifs(argv[1]);
+  if (!ifs) {
+    throw std::runtime_error{"Can't find json file"};
+  }
+  json jf = json::parse(ifs);
+
+  std::pair<std::vector<Student>,std::string> pair = parse_json(jf);
   std::vector<Student> students = pair.first;
   if (pair.second != "") {
     std::cout << "Incorrect reading json file. " << pair.second;

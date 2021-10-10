@@ -31,7 +31,7 @@ std::any get_avg(json* stt);
 
 std::any get_debt(json* stt);
 
-std::pair<STUDENT_PAIR> parse_json(std::string path);
+std::pair<STUDENT_PAIR> parse_json(const json jf);
 
 Lengths get_lengths(std::vector<Student> students);
 

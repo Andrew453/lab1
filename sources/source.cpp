@@ -60,13 +60,9 @@ std::any get_debt(json* stt) {
   return debt;
 }
 
-std::pair<std::vector<Student>, std::string> parse_json(std::string path) {
+std::pair<std::vector<Student>, std::string> parse_json(const json jf) {
   std::pair<std::vector<Student>, std::string> answer;
-  std::ifstream ifs(path);
-  if (!ifs) {
-    throw std::runtime_error{"Can't find json file"};
-  }
-  json jf = json::parse(ifs);
+
   if (!jf.at("items").is_array()) {
     answer.first = std::vector<Student>{};
     answer.second = "Items is not an array!";
