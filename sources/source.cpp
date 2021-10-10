@@ -224,7 +224,7 @@ bool output(const std::vector<Student>& students, std::ostream& os) {
       os << std::setw(ls.group + 7) << grouptable;
     } else
       return false;
-
+//fdfds
     if (student.avg.type() == typeid(int)) {
       std::string avgtable =
           "| " + std::to_string(std::any_cast<int>(student.avg));
