@@ -15,11 +15,11 @@ std::string get_name(json* stt) {
 std::any get_group(json* stt) {
   std::any group;
   if (stt->at("group").is_string()) {
-    group = (std::string)stt->at("group");
+    group = stt->at("group").get<std::string>();
   }
 
   if (stt->at("group").is_number_integer()) {
-    group = (int)stt->at("group");
+    group = stt->at("group").get<int>();
   }
 
   return group;
