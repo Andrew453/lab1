@@ -197,12 +197,14 @@ Lengths get_lengths(std::vector<Student> students) {
 
 bool output(const std::vector<Student>& students, std::ostream& os) {
   std::string s = "-";
+  std::stringstream ss;
+  ss.precision(5);
   char dash;
   dash = s[0];
   std::string s2 = " ";
   char space;
   space = s2[0];
-
+  os.precision(2);
   os.fill(dash);
   os.setf(std::ios::left);
   Lengths ls = get_lengths(students);
@@ -233,7 +235,6 @@ bool output(const std::vector<Student>& students, std::ostream& os) {
     } else {
       return false;
     }
-    // fdfds
     if (student.avg.type() == typeid(int)) {
       std::string avgtable =
           "| " + std::to_string(std::any_cast<int>(student.avg));
@@ -242,8 +243,8 @@ bool output(const std::vector<Student>& students, std::ostream& os) {
       std::string avgtable = "| " + std::any_cast<std::string>(student.avg);
       os << std::setw(ls.avg + 5) << avgtable;
     } else if (student.avg.type() == typeid(float)) {
-      std::string avgtable =
-          "| " + std::to_string(std::any_cast<float>(student.avg));
+      ss << "| " << std::any_cast<float>(student.avg);
+      std::string avgtable = ss.str();
       os << std::setw(ls.avg + 5) << avgtable;
     } else {
       return false;
