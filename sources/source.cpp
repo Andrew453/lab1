@@ -7,7 +7,7 @@ using json = nlohmann::json;
 std::string get_name(json* stt) {
   std::string name;
   if (stt->at("name").is_string()) {
-    name = (std::string)stt->at("name");
+    name = stt->at("name").get<std::string>();
   }
   return name;
 }
@@ -28,11 +28,11 @@ std::any get_group(json* stt) {
 std::any get_avg(json* stt) {
   std::any avg;
   if (stt->at("avg").is_number_integer()) {
-    avg = (int)stt->at("avg");
+    avg = stt->at("avg").get<int>();
   }
 
   if (stt->at("avg").is_string()) {
-    avg = (std::string)stt->at("avg");
+    avg = stt->at("avg").get<std::string>();
   }
 
   if (stt->at("avg").is_number_float()) {
@@ -41,11 +41,11 @@ std::any get_avg(json* stt) {
 
   return avg;
 }
-
+//dssad
 std::any get_debt(json* stt) {
   std::any debt;
   if (stt->at("debt").is_string()) {
-    debt = (std::string)stt->at("debt");
+    debt = stt->at("debt").get<std::string>();
   }
 
   if (stt->at("debt").is_null()) {
