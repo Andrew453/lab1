@@ -140,54 +140,61 @@ std::pair<std::vector<Student>, std::string> parse_json(std::string path) {
 Lengths get_lengths(std::vector<Student> students) {
   Lengths ls{0, 0, 0, 0};
   for (Student student1 : students) {
-    if ((int)student1.name.length() > ls.name) {
-      ls.name = (int)student1.name.length();
+    if (static_cast<int>(student1.name.length()) > ls.name) {
+      ls.name = static_cast<int>(student1.name.length());
     }
 
     if (student1.group.type() == typeid(int)) {
       std::string strgroup = std::to_string(std::any_cast<int>(student1.group));
 
-      if ((int)strgroup.length() > ls.group) {
-        ls.group = (int)strgroup.length();
+      if (static_cast<int>(strgroup.length()) > ls.group) {
+        ls.group = static_cast<int>(strgroup.length());
       }
     } else if (student1.group.type() == typeid(std::string)) {
       //      std::cout <<
       //      (int)std::any_cast<std::string>(student1.group).length() << "  "
       //      << std::any_cast<std::string>(student1.group) << std::endl;
-      if ((int)std::any_cast<std::string>(student1.group).length() > ls.group) {
-        ls.group = (int)std::any_cast<std::string>(student1.group).length();
+      if (static_cast<int>(
+              std::any_cast<std::string>(student1.group).length()) > ls.group) {
+        ls.group = static_cast<int>(
+            std::any_cast<std::string>(student1.group).length());
       }
-    } else
+    } else {
       return Lengths{};
-
+    }
     if (student1.avg.type() == typeid(int)) {
       std::string stravg = std::to_string(std::any_cast<int>(student1.avg));
-      if ((int)stravg.length() > ls.avg) {
-        ls.avg = (int)stravg.length();
+      if (static_cast<int>(stravg.length()) > ls.avg) {
+        ls.avg = static_cast<int>(stravg.length());
       }
     } else if (student1.avg.type() == typeid(std::string)) {
-      if ((int)std::any_cast<std::string>(student1.avg).length() > ls.avg) {
-        ls.avg = (int)std::any_cast<std::string>(student1.avg).length();
+      if (static_cast<int>(std::any_cast<std::string>(student1.avg).length()) >
+          ls.avg) {
+        ls.avg =
+            static_cast<int>(std::any_cast<std::string>(student1.avg).length());
       }
     } else if (student1.avg.type() == typeid(float)) {
       std::string stravg = std::to_string(std::any_cast<float>(student1.avg));
-      if ((int)stravg.length() > ls.avg) {
-        ls.avg = (int)stravg.length();
+      if (static_cast<int>(stravg.length()) > ls.avg) {
+        ls.avg = static_cast<int>(stravg.length());
       }
-    } else
+    } else {
       return Lengths{};
-
+    }
     if (student1.debt.type() == typeid(std::string)) {
-      if ((int)std::any_cast<std::string>(student1.debt).length() > ls.debt) {
-        ls.debt = (int)std::any_cast<std::string>(student1.debt).length();
+      if (static_cast<int>(std::any_cast<std::string>(student1.debt).length()) >
+          ls.debt) {
+        ls.debt = static_cast<int>(
+            std::any_cast<std::string>(student1.debt).length());
       }
     } else if (student1.debt.type() == typeid(int)) {
       std::string strdebt = std::to_string(std::any_cast<int>(student1.debt));
-      if ((int)strdebt.length() + 6 > ls.debt) {
-        ls.debt = (int)strdebt.length() + 6;
+      if (static_cast<int>(strdebt.length()) + 6 > ls.debt) {
+        ls.debt = static_cast<int>(strdebt.length()) + 6;
       }
-    } else
+    } else {
       return Lengths{};
+    }
   }
   return ls;
 }
@@ -227,8 +234,9 @@ bool output(const std::vector<Student>& students, std::ostream& os) {
     } else if (student.group.type() == typeid(std::string)) {
       std::string grouptable = "| " + std::any_cast<std::string>(student.group);
       os << std::setw(ls.group + 7) << grouptable;
-    } else
+    } else {
       return false;
+    }
     // fdfds
     if (student.avg.type() == typeid(int)) {
       std::string avgtable =
@@ -241,9 +249,9 @@ bool output(const std::vector<Student>& students, std::ostream& os) {
       std::string avgtable =
           "| " + std::to_string(std::any_cast<float>(student.avg));
       os << std::setw(ls.avg + 5) << avgtable;
-    } else
+    } else {
       return false;
-
+    }
     if (student.debt.type() == typeid(std::string)) {
       std::string debttable = "| " + std::any_cast<std::string>(student.debt);
       os << std::setw(ls.debt + 5) << debttable;
@@ -251,8 +259,9 @@ bool output(const std::vector<Student>& students, std::ostream& os) {
       std::string debttable =
           "| " + std::to_string(std::any_cast<int>(student.debt)) + " items";
       os << std::setw(ls.debt + 5) << debttable;
-    } else
+    } else {
       return false;
+    }
     os << "|" << std::endl;
   }
   os.fill(dash);
