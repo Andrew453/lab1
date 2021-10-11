@@ -60,7 +60,7 @@ std::any get_debt(json* stt) {
   return debt;
 }
 
-std::pair<std::vector<Student>, std::string> parse_json(const json jf) {
+std::pair<std::vector<Student>, std::string> parse_json(const json & jf) {
   std::pair<std::vector<Student>, std::string> answer;
 
   if (!jf.at("items").is_array()) {

@@ -23,8 +23,6 @@ int main(int argc, char* argv[]) {
     std::cout << "Incorrect reading json file. " << pair.second;
     return 0;
   }
-//  std::cout.precision(2);
-//  std::cout.setf(std::ios::fixed);
   bool ok = output(students,std::cout);
   if (!ok) {
     std::cout << "Some problems with output table" << std::endl;

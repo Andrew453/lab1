@@ -17,7 +17,7 @@ struct Student : public std::_Resetiosflags {
 };
 
 struct Lengths {
-  int name;   /// Максимальная длина слова в name
+  int name;   // Максимальная длина слова в name
   int group;  //
   int avg;    //
   int debt;   //
